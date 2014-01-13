@@ -1,6 +1,11 @@
-<?php $this->template('header'); ?>
+<?php
+/*
+	Bitcoin Webskin - an open source PHP web interface to bitcoind
+	Copyright (c) 2011 14STzHS8qjsDPtqpQgcnwWpTaSHadgEewS
+*/
+?><?php $this->template('header'); ?>
 
-<!--p><a href="./?a=about">About Bitcoin Webskin</a></p>
+<p><a href="./?a=about">About Bitcoin Webskin</a></p>
 
 <p><a href="./?a=listtransactions&account=*&count=20">Last 20 Transactions</a>
 <br /><a href="./?a=listtransactions&account=*&count=9999999">All Transactions</a></p>
@@ -9,90 +14,62 @@
 
 <p><a href="./?a=getinfo">Get Info</a></p>
 
-<p><a href="./?a=server.control">Server Control</a></p-->
+<p><a href="./?a=server.control">Server Control</a></p>
 
-<div class="container bs-docs-container" style="margin-top: 51px">
-	<div class="row">
-		<div class="col-md-3">
-			<div class="bs-sidebar hidden-print affix" role="complementary">
-				<ul class="nav bs-sidenav">	
-					<li>
-						<a href="#accounts">Accounts</a>
-						<ul class="nav nav-show">
-							<li><a href="#list-accounts">List Accounts</a></li>
-							<li><a href="#list-received">List Received</a></li>
-							<li><a href="#get-account-address">Get Account Address</a></li>
-							<li><a href="#get-received-by-account">Get Received By Account</a></li>
-						</ul>
-					</li>
-					<li>
-						<a href="transcations">Transcations</a>
-						<ul class="nav nav-show">
-							<li><a href="#list-transcations">List Transcations</a></li>
-							<li><a href="#get-transcation">Get Transcation</a></li>
-						</ul>
-					</li>
-				</ul>
-	  		</div>
-		</div>
-		<div class="col-md-9">
-			<div class="jumbotron" id="accounts">
-				<h1>Accounts</h1>
-				<label id="list-accounts">List Accounts</label>
-				<form role="form" class="form-inline">
-					<input type="hidden" name="a" value="listaccounts">
-					<input type="number" class="form-control" name="minconf" placeholder="Minimum Confirmations">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-				<label id="list-received">List Received By Account</label>
-				<form role="form" class="form-inline">
-					<input type="hidden" name="a" value="listreceivedbyaccount">
-					<input type="number" class="form-control" name="minconf" placeholder="Minimum Confirmations">
-					<select name="includeempty" class="form-control"><option value="true">Include empty</option><option value="false">Does not include empty</option></select>
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-				<label id="get-account-address">Get Account Address</label>
-				<form role="form" class="form-inline">
-					<input type="hidden" name="a" value="getaddressesbyaccount">
-					<input type="text" class="form-control" name="account" placeholder="Account">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-				<label id="get-received-by-account">Get Received By Account</label>
-				<form role="form" class="form-inline">
-					<input type="hidden" name="a" value="getreceivedbyaccount">
-					<input type="text" class="form-control" name="account" placeholder="Account">
-					<input type="number" class="form-control" name="minconf" placeholder="Minimum Confirmations">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-				<label id="get-balance">Get Balance</label>
-				<form role="form" class="form-inline">
-					<input type="hidden" name="a" value="getbalance">
-					<input type="text" class="form-control" name="account" placeholder="Account">
-					<input type="number" class="form-control" name="minconf" placeholder="Minimum Confirmations">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-			</div>
-			<div class="jumbotron" id="transactions">
-				<h1>Transcations</h1>
-				<label id="list-transcations">List Transcations</label>
-				<form class="form-inline" role="form">
-					<input type="hidden" name="a" value="listtransactions">
-					<input type="text" class="form-control" name="account" placeholder="Account">
-					<input type="number" class="form-control" name="count" placeholder="Limit">
-					<br>
-					<input type="text" class="form-control text-wider" name="from" placeholder="From">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-				<label id="get-transcation">Get Transcation</label>
-				<form class="form-inline" role="form">
-					<input type="hidden" name="a" value="gettransaction">
-					<input type="text" class="form-control text-wider" name="txid" placeholder="Transcation ID">
-					<button type="submit" class="btn btn-default">Submit</button>
-				</form>
-			</div>
-		</div>
-	</div>
-</div>
+
+<p><a href="#accounts">accounts</a> | <a href="#transactions">transactions</a> 
+| <a href="#addresses">addresses</a> | <a href="#sending">sending</a> | <a href="#server">server</a> 
+| <a href="#namecoin">namecoin</a> | <a href="#webskin">webskin</a> </p>	
+
+<hr /><a name="accounts">Accounts</a>
+
+<form action="./" method="GET"><input type="hidden" name="a" value="listaccounts">
+<input type="submit" value="listaccounts"> 
+	minconf:<input type="text" name="minconf" value="1" size="3">
+</form>
+
+<form action="./" method="GET"><input type="hidden" name="a" value="listreceivedbyaccount">
+<input type="submit" value="listreceivedbyaccount"> 
+	minconf:<input type="text" name="minconf" value="1" size="3">
+	includeempty:<select name="includeempty"><option value="true">true</option><option value="false">false</option></select>
+</form>
+	
+<form action="./" method="GET"><input type="hidden" name="a" value="getaccountaddress">
+<input type="submit" value="getaccountaddress"> 
+	account:<input type="text" name="account" value='test' size="20">
+</form>	
+
+<form action="./" method="GET"><input type="hidden" name="a" value="getaddressesbyaccount">
+<input type="submit" value="getaddressesbyaccount"> 
+	account:<input type="text" name="account" value='test' size="20">
+</form>	
+
+<form action="./" method="GET"><input type="hidden" name="a" value="getreceivedbyaccount">
+<input type="submit" value="getreceivedbyaccount"> 
+	account:<input type="text" name="account" value='test' size="20">
+	minconf:<input type="text" name="minconf" value="1" size="3">
+</form>	
+
+<form action="./" method="GET"><input type="hidden" name="a" value="getbalance">
+<input type="submit" value="getbalance"> 
+	account:<input type="text" name="account" value='*' size="20">
+	minconf:<input type="text" name="minconf" value="1" size="3">
+</form>	
+	
+<hr /><a name="transactions">Transactions</a>
+
+<form action="./" method="GET"><input type="hidden" name="a" value="listtransactions">
+<input type="submit" value="listtransactions"> 
+	account:<input type="text" name="account" value="*" size="20">
+	count:<input type="text" name="count" value="9999999" size="3">
+	from:<input type="text" name="from" value=0 size="3">
+</form>	
+
+<form action="./" method="GET"><input type="hidden" name="a" value="gettransaction">
+<input type="submit" value="gettransaction"> 
+	txid:<input type="text" name="txid" value="" size="68">
+</form>	
+
 
 <hr /><a name="addresses">Addresses</a>
 

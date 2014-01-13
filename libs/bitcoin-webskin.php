@@ -15,7 +15,7 @@ require_once 'config.php';
 
 class BitcoinWebskin {
 
-	public $debug = 1;  // Debug notices  1=on  0=off
+	public $debug = 0;  // Debug notices  1=on  0=off
 	
 	private $wallet_is_open; // Current status of wallet connection   true/false
 	
